@@ -1,5 +1,5 @@
 package com.example.demo;
-
+import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class PostsViewController {
 
-    @ResponseBody
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String list() {
-        return "Здесь будет главная страница";
+    public String list(Model model) {
+        model.addAttribute("appName", "Мое супер предложение");
+        return "list";
     }
     @ResponseBody
     @RequestMapping(path = "/post/{id}", method = RequestMethod.GET)
